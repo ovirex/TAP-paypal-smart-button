@@ -87,9 +87,7 @@
 
         function validate(event) {
             if (event.id === "amount") {
-                return event.value === "40" || event.value === "30"
-                    ? true
-                    : false;
+                return +event.value >= 25;
             }
             return event.value.length > 0;
         }
@@ -133,7 +131,7 @@
                         priceError.textContent = "Por favor ingrese un monto";
                         priceError.style.visibility = "visible";
                     } else {
-                        if (amount.value === "40" || amount.value === "30") {
+                        if (+amount.value >= 25) {
                             priceError.style.visibility = "hidden";
                         } else {
                             priceError.textContent =
@@ -153,7 +151,7 @@
 
                     /* Agrega la comisión al monto */
                     let amountToPay = "";
-                    if (amount.value == "40" || amount.value == "30") {
+                    if (+amount.value >= 25) {
                         amountToPay = calculateAmountWithFee(+amount.value);
                         console.log(amountToPay);
                     }
